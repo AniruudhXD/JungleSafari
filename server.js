@@ -1,13 +1,18 @@
+console.log("✅ Running the REAL server.js from:", __filename);
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const sqlite3 = require('sqlite3').verbose();
-const app = express();
-const PORT = 3000;
+const path = require('path');
+require('dotenv').config();
+
+const app = express(); // ✅ THIS LINE MUST BE HERE before using `app.use`
+
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static('public')); // For serving HTML, CSS, JS files
+app.use(express.static('public'));
 
 // Route to handle form submission
 app.post('/book', (req, res) => {
@@ -31,8 +36,8 @@ app.post('/book', (req, res) => {
             port: 465,
             secure: true,
             auth: {
-              user: 'animp4sem@gmail.com',
-              pass: 'lrsbwseejvvjveyw'
+              user: process.env.EMAIL_USER,
+              pass: process.env.EMAIL_PASS
             }
           });          
 
