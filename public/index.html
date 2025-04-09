@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jungle Safari</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Jungle Safari</h1>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#about-section">About</a>
+                <a href="#booking-section">Booking</a>
+                <a href="#">Gallery</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>
+
+        <div class="hero-text-box">
+            <h1>Experience the Wild like Never Before</h1>
+            <p>Book your Jungle Safari adventure with us!</p>
+            <a href="#booking-section" class="button">Get Started</a>
+        </div>
+
+        <section class="about" id="about-section">
+            <h2>About Our Safari</h2>
+            <p>Discover the beauty of nature like never before. Our Jungle Safari offers you an unforgettable journey through the wilderness. Whether you seek thrilling wildlife encounters or serene natural beauty, we have it all covered. Our experienced guides ensure your safety and provide deep insights into the habitats and animals you encounter. Enjoy customized packages to suit your adventure needs.</p>
+        </section>
+
+        <section class="booking" id="booking-section">
+            <h2>Book Your Safari</h2>
+            <form action="/book" method="POST">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="tel" name="phone" placeholder="Phone Number" pattern="[0-9]{10}" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="date" name="date" required>
+            
+                <select name="package" class="package-select" required>
+                    <option value="" disabled selected>Select Package</option>
+                    <option value="lite">Lite - ₹2000 (Basic jungle tour, 2 hours)</option>
+                    <option value="standard">Standard - ₹4000 (Extended tour, 4 hours + Refreshments)</option>
+                    <option value="premium">Premium - ₹6000 (Full-day tour with meals and special access)</option>
+                </select>
+            
+                <button type="submit">Book Now</button>
+            </form>            
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
