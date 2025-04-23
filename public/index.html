@@ -2,54 +2,134 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jungle Safari</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Wild Trails Safari</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Jungle Safari</h1>
+            <img src="/images/logo.jpg" alt="Wild Trails Safari Logo" class="logo">
             <nav>
-                <a href="#">Home</a>
-                <a href="#about-section">About</a>
-                <a href="#booking-section">Booking</a>
-                <a href="#">Gallery</a>
-                <a href="#">Contact</a>
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/booking">Booking</a>
+                <a href="/gallery">Gallery</a>
+                <a href="/contact">Contact</a>
             </nav>
         </header>
 
-        <div class="hero-text-box">
-            <h1>Experience the Wild like Never Before</h1>
-            <p>Book your Jungle Safari adventure with us!</p>
-            <a href="#booking-section" class="button">Get Started</a>
-        </div>
-
-        <section class="about" id="about-section">
-            <h2>About Our Safari</h2>
-            <p>Discover the beauty of nature like never before. Our Jungle Safari offers you an unforgettable journey through the wilderness. Whether you seek thrilling wildlife encounters or serene natural beauty, we have it all covered. Our experienced guides ensure your safety and provide deep insights into the habitats and animals you encounter. Enjoy customized packages to suit your adventure needs.</p>
+        <section class="hero">
+            <h1>Embark on Your Dream Jungle Safari Adventure</h1>
+            <p>Join Wild Trails Safari for expertly guided tours through India's premier national parks. Witness majestic wildlife and create memories that will last a lifetime.</p>
+            <a href="/booking" class="button">Book Your Safari Now</a>
         </section>
 
-        <section class="booking" id="booking-section">
-            <h2>Book Your Safari</h2>
-            <form action="/book" method="POST">
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="tel" name="phone" placeholder="Phone Number" pattern="[0-9]{10}" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="date" name="date" required>
-            
-                <select name="package" class="package-select" required>
-                    <option value="" disabled selected>Select Package</option>
-                    <option value="lite">Lite - ₹2000 (Basic jungle tour, 2 hours)</option>
-                    <option value="standard">Standard - ₹4000 (Extended tour, 4 hours + Refreshments)</option>
-                    <option value="premium">Premium - ₹6000 (Full-day tour with meals and special access)</option>
-                </select>
-            
-                <button type="submit">Book Now</button>
-            </form>            
+        <section class="home-slideshow-section">
+            <h2>Wildlife Spotlights</h2>
+            <div class="home-slideshow-container">
+                <div class="home-slide fade">
+                    <img src="/images/home-slide1.jpg" alt="Wildlife Image 1">
+                </div>
+                <div class="home-slide fade">
+                    <img src="/images/home-slide2.jpg" alt="Wildlife Image 2">
+                </div>
+                <div class="home-slide fade">
+                    <img src="/images/home-slide3.jpg" alt="Wildlife Image 3">
+                </div>
+                <div class="home-slide fade">
+                    <img src="/images/home-slide4.jpg" alt="Wildlife Image 4">
+                </div>
+                <div class="home-slide fade">
+                    <img src="/images/home-slide5.jpg" alt="Wildlife Image 5">
+                </div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+            </div>
         </section>
+
+        <section class="packages-preview">
+            <h2>Our Featured Safari Packages</h2>
+            <div class="package-card">
+                <h3>Lite Package</h3>
+                <p>Short and sweet wildlife experience...</p>
+                <a href="/about" class="button">Learn More</a>
+            </div>
+            <div class="package-card">
+                <h3>Standard Package</h3>
+                <p>Extended adventure with refreshments...</p>
+                <a href="/about" class="button">Learn More</a>
+            </div>
+            <div class="package-card">
+                <h3>Premium Package</h3>
+                <p>Full-day immersion into the wilderness...</p>
+                <a href="/about" class="button">Learn More</a>
+            </div>
+        </section>
+
+        <section class="usps">
+            <h2>Why Choose Wild Trails Safari?</h2>
+            <div class="usp-item">Expert Guides</div>
+            <div class="usp-item">Ethical Tourism</div>
+            <div class="usp-item">Small Groups</div>
+        </section>
+
+        <section class="gallery-teaser">
+            <h2>Wildlife Gallery Highlights</h2>
+            <div class="slideshow-container">
+                <div class="slide fade">
+                    <img src="/images/gallery/image1.jpg" alt="Elephant">
+                </div>
+                <div class="slide fade">
+                    <img src="/images/gallery/image2.jpg" alt="Tiger">
+                </div>
+                <div class="slide fade">
+                    <img src="/images/gallery/image3.jpg" alt="Leopard">
+                </div>
+            </div>
+            <a href="/gallery" class="button">View Full Gallery</a>
+        </section>
+
     </div>
-    
-    <script src="script.js"></script>
+
+    <script>
+        let slideIndex = 0; // Initialize slideIndex to 0
+        showSlides(); // Call showSlides() to start the slideshow
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("home-slide");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            slides[slideIndex - 1].style.animation = "slide 1s ease-in-out"; // Apply the slide animation here
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 5000); // Change image every 5 seconds (5000 milliseconds)
+        }
+
+        function plusSlides(n) {
+            clearTimeout(slideTimeout);  // Clear the timeout to prevent conflicts
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            clearTimeout(slideTimeout);
+            showSlides(slideIndex = n);
+        }
+
+    </script>
 </body>
 </html>

@@ -1,113 +1,491 @@
-body {
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    background:url('images/jungle.avif') no-repeat center center/cover;
-    color:#fff;
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
 }
 
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('./images/jungle.avif') no-repeat center center fixed; /* 'fixed' property here */
+  background-size: cover; /* Ensure the image covers the entire viewport */
+  color: #fff;
+  height: 100%; /* Ensure body takes full height */
+  position: relative; /* For potential overlay or other absolute positioning */
+}
+
+/* Remove the html::before overlay if it's still there */
+html::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity as needed */
+  z-index: -1;
+}
+
+/* ... rest of your CSS ... */
+
 .container {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 header {
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    padding:20px;
-    background-color:rgba(0,0,0,0.6);
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Space between logo and nav */
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-header h1 {
-    margin-left: 20px;
+header .logo {
+  height: 60px; /* Adjust logo size */
+  border-radius: 8px; /* Rounded corners for the logo */
+  margin-left: 20px; /* Spacing from the left edge */
 }
 
 header nav a {
-    margin:0 15px;
-    text-decoration:none;
-    color:white;
-    font-weight:500;
+  margin: 0 15px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  position: relative; /* Needed for absolute positioning of the hover text */
+  overflow: hidden; /* Hide the hover text initially */
+  display: inline-block; /* Ensure proper sizing */
 }
 
-.hero-text-box {
-    background-color:rgba(0, 0, 0, 0.5);
-    padding:30px;
-    border-radius:10px;
-    text-align:center;
-    width:75%;
-    margin-top:30px;
-    animation:fadeIn 0.5s ease-in-out;
+header nav a:before {
+  content: attr(data-hover); /* Get the text from the data-hover attribute */
+  position: absolute;
+  top: 100%; /* Initially positioned below the link */
+  left: 0;
+  color: #4CAF50; /* The hover color */
+  white-space: nowrap; /* Prevent text wrapping */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for sliding up */
 }
 
-.hero-text-box h1 {
-    font-size:3rem;
-    margin-bottom:20px;
+header nav a:hover:before {
+  transform: translateY(-100%); /* Slide the hover text up */
 }
 
-.hero-text-box p {
-    font-size:1.2rem;
-    margin-bottom:30px;
+section {
+  background-color: rgba(0, 0, 0, 0.5); /* Lighter black background for all sections */
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 10px;
+  width: 80%;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+section h2 {
+  color: #fff;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+section p {
+  text-align: left;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.hero {
+  padding: 60px 30px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
 }
 
 .button {
-    padding:10px 20px;
-    background-color:#4CAF50;
-    color:white;
-    text-decoration:none;
-    border-radius:5px;
-    transition:background-color 0.3s;
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .button:hover {
-    background-color:#45a049;
+  background-color: #45a049;
 }
 
-.about, .booking {
-    background-color:rgba(0,0,0,0.5);
-    padding:30px;
-    margin:20px auto;
-    border-radius:10px;
-    width:80%;
-    text-align:center;
-    animation:fadeIn 1s ease-in-out;
+.packages-preview {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-top: 20px;
 }
 
-.about p {
-    line-height:1.6;
+.package-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px;
+  width: calc(33% - 30px); /* Adjust width for responsiveness */
+  text-align: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Added transition */
 }
 
-form input, form button, form select {
-    margin:10px 0;
-    padding:10px;
-    width:100%;
-    border:none;
-    border-radius:5px;
+.package-card:hover {
+  transform: translateY(-5px); /* Move up slightly on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
 }
 
-form button {
-    background-color:#4CAF50;
-    color:white;
-    transition:background-color 0.3s;
+.packages-preview h3 {
+  color: #4CAF50;
+  margin-top: 0;
 }
 
-form button:hover {
-    background-color:#45a049;
+.usps {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
 }
 
-form select.package-select {
-    padding: 12px;
-    border-radius: 30px;
-    width: 50%;
-    background-color: #282828;
-    color: white;
+.usp-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin: 10px;
 }
 
-html {
-    scroll-behavior: smooth;
+.gallery-teaser {
+  text-align: center;
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 80%;
 }
 
-@keyframes fadeIn {
-    0% { opacity:0; }
-    100% { opacity:1; }
+.gallery-container {
+  width: 90%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 250px 250px auto; /* Force at least two columns */
+  grid-gap: 15px;
+}
+
+.gallery-item {
+  margin-bottom: 15px;
+  /* All other styles for .gallery-item commented out */
+  /* border-radius: 8px; */
+  /* overflow: hidden; */
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+  /* transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; */
+  position: relative; /* Keep this for the overlay later */
+  box-sizing: border-box; /* Keep this */
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1; /* Show overlay on hover */
+}
+
+.overlay h3 {
+  margin: 0;
+  padding: 10px;
+}
+
+.slideshow-container {
+  max-width: 600px; /* Adjust as needed */
+  position: relative;
+  margin: 20px auto;
+  overflow: hidden; /* Hide images that are not currently visible */
+  border-radius: 8px; /* Match image border-radius */
+}
+
+.slide {
+  display: none; /* Initially hide all slides */
+  width: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* Show the first slide by default */
+.slideshow-container .slide:first-child {
+  display: block;
+}
+
+section#booking-section {
+  padding: 40px;
+}
+
+section#booking-section h2 {
+  color: #fff;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+form#booking-form {
+  display: flex;
+  flex-direction: column; /* Stack form elements vertically */
+  gap: 20px; /* Spacing between form elements */
+  width: 80%; /* Adjust form width as needed */
+  max-width: 600px; /* Limit maximum width */
+  margin: 0 auto; /* Center the form on the page */
+}
+
+form#booking-form label {
+  color: #eee;
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+  text-align: left;
+}
+
+form#booking-form input[type="text"],
+form#booking-form input[type="tel"],
+form#booking-form input[type="email"],
+form#booking-form input[type="date"],
+form#booking-form select {
+  padding: 14px;
+  border: 1px solid #777;
+  border-radius: 5px;
+  background-color: #444;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem; /* Improve readability */
+  transition: border-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Add levitate transitions */
+}
+
+form#booking-form select {
+  appearance: none; /* Remove default arrow */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  background-repeat: no-repeat;
+  background-position-x: 97%;
+  background-position-y: 50%;
+}
+
+form#booking-form button[type="submit"] {
+  padding: 16px 30px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px; /* More rounded button */
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease-in-out; /* Smooth transition for hover */
+  width: fit-content; /* Adjust button width to content */
+  margin: 20px auto 0; /* Center the button */
+}
+
+form#booking-form input[type="text"]:hover,
+form#booking-form input[type="tel"]:hover,
+form#booking-form input[type="email"]:hover,
+form#booking-form input[type="date"]:hover,
+form#booking-form select:hover {
+  border-color: #66cc66; /* A slightly brighter green on hover */
+  transform: translateY(-2px); /* Subtle levitate on individual fields */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow on individual fields */
+}
+
+form#booking-form button[type="submit"]:hover {
+  background-color: #45a049;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow on button hover */
+}
+
+.company-details,
+.package-details {
+    background-color: rgba(50, 50, 50, 0.7); /* Slightly lighter dark gray with some transparency */
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    color: #eee;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.company-details h2,
+.package-details h3 {
+    color: #4CAF50;
+    margin-top: 0;
+    border-bottom: 1px solid #666;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.package-details ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.package-details li {
+    margin-bottom: 5px;
+}
+
+.company-details:hover,
+.package-details:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ... existing CSS ... */
+
+.home-slideshow-section {
+  text-align: center;
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 95%;
+}
+
+.home-slideshow-container {
+  max-width: none;
+  position: relative;
+  margin: 20px auto;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+}
+
+.home-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.home-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: #717171;
+}
+
+/* Sliding animation */
+@keyframes slide {
+  from {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+      opacity: .4
+  }
+
+  to {
+      opacity: 1
+  }
 }

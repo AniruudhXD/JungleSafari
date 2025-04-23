@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking - Wild Trails Safari</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="/images/logo.jpg" alt="Wild Trails Safari Logo" class="logo">
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/booking">Booking</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="booking-section">
+      <h2>Book Your Safari with Wild Trails</h2>
+      <form action="/book" method="POST" id="booking-form">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Your Phone" pattern="[0-9]{10}" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+        <label for="date">Preferred Date</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="package">Select Package</label>
+        <select id="package" name="package" class="package-select" required>
+          <option value="" disabled selected>Choose a Package</option>
+          <option value="Lite">Lite - ₹2000 (2 hrs)</option>
+          <option value="Standard">Standard - ₹4000 (4 hrs + Refreshments)</option>
+          <option value="Premium">Premium - ₹6000 (Full-day with meals)</option>
+        </select>
+
+        <button type="submit">Book Now</button>
+      </form>
+    </section>
+  </div>
+</body>
+</html>
