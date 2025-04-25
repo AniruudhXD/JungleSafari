@@ -1,115 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About - Wild Trails Safari</title>
-  <link rel="stylesheet" href="./style.css">
-  <style>
-    .package-details {
-      margin-top: 20px;
-      padding: 15px;
-      border: 1px solid #555;
-      border-radius: 8px;
-      text-align: left;
-    }
-    .package-details h3 {
-      color: #4CAF50;
-      margin-top: 0;
-    }
-    .package-details p {
-      margin-bottom: 10px;
-    }
-    .company-details {
-      margin-top: 30px;
-      padding: 15px;
-      border: 1px solid #555;
-      border-radius: 8px;
-      text-align: left;
-    }
-    .company-details h2 {
-      color: #fff;
-      border-bottom: 2px solid #4CAF50;
-      padding-bottom: 10px;
-      margin-bottom: 15px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Wild Trails Safari - About Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('../images/jungle.avif') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4);
+            z-index: -2;
+        }
+
+        header {
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 5%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+
+        .logo {
+            height: 50px;
+        }
+
+        nav a {
+            margin: 0 12px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0%;
+            height: 2px;
+            background: #4CAF50;
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        main {
+            padding-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .about-container {
+            background: rgb(0, 0, 0 / 26%);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            width: 85%;
+            max-width: 1100px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+
+        h2 {
+            color: #fff;
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            color: #4CAF50;
+            margin: 20px 0 10px;
+        }
+
+        p {
+            color: #ddd;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .package-details {
+            margin-top: 25px;
+            padding: 20px;
+            border-left: 5px solid #4CAF50;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(6px);
+            border-radius: 10px;
+        }
+
+        .package-details h3 {
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .package-details ul {
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .package-details ul li::before {
+            content: '•';
+            color: #4CAF50;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .about-container {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
     <header>
-        <img src="/images/logo.jpg" alt="Wild Trails Safari Logo" class="logo">
+        <img src="../images/logo.jpg" alt="Wild Trails Safari Logo" class="logo">
         <nav>
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/booking">Booking</a>
-          <a href="/gallery">Gallery</a>
-          <a href="/contact">Contact</a>
+            <a href="/" data-hover="Home">Home</a>
+            <a href="/about" data-hover="About">About</a>
+            <a href="/booking" data-hover="Booking">Booking</a>
+            <a href="/gallery" data-hover="Gallery">Gallery</a>
+            <a href="/contact" data-hover="Contact">Contact</a>
         </nav>
-      </header>
+    </header>
 
-    <section>
-      <h2>About Wild Trails Safari</h2>
-      <p>
-        Welcome to Wild Trails Safari, your trusted partner for unforgettable wildlife
-        adventures in the heart of India's most breathtaking national forests.
-        With years of experience and a deep respect for nature, we are committed
-        to providing ethical, educational, and thrilling safari experiences.
-      </p>
+    <main>
+        <div class="about-container">
+            <h2>About Wild Trails Safari</h2>
+            <p>Welcome to Wild Trails Safari, your trusted partner for unforgettable wildlife adventures in the heart of India's most breathtaking national forests.</p>
 
-      <div class="company-details">
-        <h2>Our Company</h2>
-        <p><strong>Address:</strong> Near Tiger Reserve, National Forest, India</p>
-        <p><strong>Email:</strong> info@wildtrailssafari.com</p>
-        <p><strong>Phone:</strong> +91 98765 43210</p>
-        <p>
-          We are a locally based company dedicated to conservation and supporting
-          the surrounding communities. Our guides are experts in the local flora
-          and fauna, ensuring you have the best possible chance of wildlife
-          sightings while learning about the delicate ecosystem.
-        </p>
-      </div>
+            <h3>Our Company</h3>
+            <p>📍 Address: Near Tiger Reserve, National Forest, India</p>
+            <p>📧 Email: info@wildtrailssafari.com</p>
+            <p>📞 Phone: +91 98765 43210</p>
 
-      <h2>Our Safari Packages</h2>
+            <p>We are a locally based company dedicated to conservation and supporting the surrounding communities. Our guides are experts in local flora and fauna, ensuring memorable and educational safari journeys.</p>
 
-      <div class="package-details">
-        <h3>Lite Package - ₹2000 (2 hours)</h3>
-        <p><strong>Duration:</strong> 2 hours</p>
-        <p><strong>Includes:</strong></p>
-        <ul>
-          <li>Guided jeep safari through designated core areas.</li>
-          <li>Experienced driver and knowledgeable guide.</li>
-          <li>Focus on general wildlife spotting and scenic views.</li>
-          <li>Ideal for those with limited time or first-time safari goers.</li>
-        </ul>
-      </div>
+            <h2>Our Safari Packages</h2>
 
-      <div class="package-details">
-        <h3>Standard Package - ₹4000 (4 hours + Refreshments)</h3>
-        <p><strong>Duration:</strong> 4 hours</p>
-        <p><strong>Includes:</strong></p>
-        <ul>
-          <li>Extended jeep safari covering a wider range of the park.</li>
-          <li>Expert driver and experienced naturalist guide.</li>
-          <li>Refreshments (water, juice, light snacks) provided during the safari.</li>
-          <li>Higher chance of spotting diverse wildlife, including key species.</li>
-          <li>Opportunities for bird watching and learning about the ecosystem in detail.</li>
-        </ul>
-      </div>
+            <div class="package-details">
+                <h3>Lite Package - ₹2000 (2 hours)</h3>
+                <ul>
+                    <li>Guided jeep safari through core areas</li>
+                    <li>Experienced driver and knowledgeable guide</li>
+                    <li>Refreshments included</li>
+                </ul>
+            </div>
 
-      <div class="package-details">
-        <h3>Premium Package - ₹6000 (Full-day with meals)</h3>
-        <p><strong>Duration:</strong> Full day (approximately 8 hours)</p>
-        <p><strong>Includes:</strong></p>
-        <ul>
-          <li>Comprehensive full-day exploration of the national park.</li>
-          <li>Dedicated expert naturalist guide throughout the day.</li>
-          <li>Morning tea/coffee, packed lunch, and evening snacks.</li>
-          <li>Access to exclusive zones or trails (where permitted).</li>
-          <li>Focus on in-depth wildlife tracking, photography opportunities, and understanding animal behavior.</li>
-          <li>Ideal for serious wildlife enthusiasts and photographers.</li>
-        </ul>
-      </div>
-    </section>
-  </div>
+            <div class="package-details">
+                <h3>Standard Package - ₹3500 (4 hours)</h3>
+                <ul>
+                    <li>Extended jeep safari across diverse terrain</li>
+                    <li>Wildlife expert guidance</li>
+                    <li>Snacks, beverages, and binoculars provided</li>
+                </ul>
+            </div>
+
+            <div class="package-details">
+                <h3>Premium Package - ₹5000 (Full day)</h3>
+                <ul>
+                    <li>Full-day experience with multiple safaris</li>
+                    <li>Breakfast, lunch, and wildlife tracking session</li>
+                    <li>Dedicated guide and photography opportunities</li>
+                </ul>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

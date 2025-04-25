@@ -2,8 +2,151 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Wild Trails Safari</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>Wild Trails Safari - About Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('../images/jungle.avif') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4);
+            z-index: -2;
+        }
+
+        header {
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 5%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+
+        .logo {
+            height: 50px;
+        }
+
+        nav a {
+            margin: 0 12px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0%;
+            height: 2px;
+            background: #4CAF50;
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        main {
+            padding-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .about-container {
+            background: rgb(0, 0, 0 / 26%);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            width: 85%;
+            max-width: 1100px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+
+        h2 {
+            color: #fff;
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            color: #4CAF50;
+            margin: 20px 0 10px;
+        }
+
+        p {
+            color: #ddd;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .package-details {
+            margin-top: 25px;
+            padding: 20px;
+            border-left: 5px solid #4CAF50;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(6px);
+            border-radius: 10px;
+        }
+
+        .package-details h3 {
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .package-details ul {
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .package-details ul li::before {
+            content: '•';
+            color: #4CAF50;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .about-container {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -17,12 +160,6 @@
                 <a href="/contact">Contact</a>
             </nav>
         </header>
-
-        <section class="hero">
-            <h1>Embark on Your Dream Jungle Safari Adventure</h1>
-            <p>Join Wild Trails Safari for expertly guided tours through India's premier national parks. Witness majestic wildlife and create memories that will last a lifetime.</p>
-            <a href="/booking" class="button">Book Your Safari Now</a>
-        </section>
 
         <section class="home-slideshow-section">
             <h2>Wildlife Spotlights</h2>
@@ -54,6 +191,12 @@
             </div>
         </section>
 
+        <section class="hero">
+            <h1>Embark on Your Dream Jungle Safari Adventure</h1>
+            <p>Join Wild Trails Safari for expertly guided tours through India's premier national parks. Witness majestic wildlife and create memories that will last a lifetime.</p>
+            <a href="/booking" class="button">Book Your Safari Now</a>
+        </section>
+
         <section class="packages-preview">
             <h2>Our Featured Safari Packages</h2>
             <div class="package-card">
@@ -81,52 +224,63 @@
         </section>
 
         <section class="gallery-teaser">
-            <h2>Wildlife Gallery Highlights</h2>
-            <div class="slideshow-container">
-                <div class="slide fade">
-                    <img src="/images/gallery/image1.jpg" alt="Elephant">
-                </div>
-                <div class="slide fade">
-                    <img src="/images/gallery/image2.jpg" alt="Tiger">
-                </div>
-                <div class="slide fade">
-                    <img src="/images/gallery/image3.jpg" alt="Leopard">
-                </div>
-            </div>
-            <a href="/gallery" class="button">View Full Gallery</a>
-        </section>
+          <h2>Wildlife Gallery Highlights</h2>
+          <div class="slideshow-container">
+              <!-- Slide 1 -->
+              <div class="gallery-item">
+                <img src="../images/gallery/image1.jpg" alt="Deer" />
+                <div class="gallery-caption">Deer</div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="gallery-item">
+                <img src="../images/gallery/image4.jpg" alt="Lion" />
+                <div class="gallery-caption">Lion</div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="gallery-item">
+                <img src="../images/gallery/image9.jpg" alt="Zebra" />
+                <div class="gallery-caption">Zebra</div>
+              </div>
+          </div>
+          <a href="/gallery" class="button">View Full Gallery</a>
+      </section>
 
     </div>
 
     <script>
-        let slideIndex = 0; // Initialize slideIndex to 0
+        let slideIndex = 1; // Initialize slideIndex to 0
         showSlides(); // Call showSlides() to start the slideshow
+        let slideTimeout; // Variable to hold the timeout
 
-        function showSlides() {
-            let i;
-            let slides = document.getElementsByClassName("home-slide");
-            let dots = document.getElementsByClassName("dot");
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            slides[slideIndex - 1].style.animation = "slide 1s ease-in-out"; // Apply the slide animation here
-            dots[slideIndex - 1].className += " active";
-            setTimeout(showSlides, 5000); // Change image every 5 seconds (5000 milliseconds)
-        }
+        function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("home-slide");
+    let dots = document.getElementsByClassName("dot");
+
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    clearTimeout(slideTimeout);
+    slideTimeout = setTimeout(() => {
+        plusSlides(1); // move to next slide
+    }, 5000);
+}
 
         function plusSlides(n) {
-            clearTimeout(slideTimeout);  // Clear the timeout to prevent conflicts
             showSlides(slideIndex += n);
         }
 
         function currentSlide(n) {
-            clearTimeout(slideTimeout);
             showSlides(slideIndex = n);
         }
 

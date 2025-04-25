@@ -1,160 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Wild Trails Safari - Gallery</title>
-    <link rel="stylesheet" href="./style.css">
-    <style>
-        .gallery-container {
-            width: 90%;
-            margin: 20px auto;
-        }
+  <meta charset="UTF-8" />
+  <title>Wild Trails Safari - Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
-        .gallery-item {
-            position: relative; /* Needed for absolute positioning of the overlay */
-            margin-bottom: 15px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #111;
+    }
 
-        .gallery-item img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #1c1c1c;
+      padding: 10px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
 
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0; /* Initially hidden */
-            transition: opacity 0.3s ease-in-out;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            text-align: center;
-            z-index: 1; /* Ensure overlay is on top of the image */
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        .gallery-item:hover .overlay {
-            opacity: 1; /* Show overlay on hover */
-        }
+    .logo {
+      height: 50px;
+    }
 
-        .overlay h3 {
-            margin: 0;
-            padding: 10px;
-        }
-    </style>
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: #4CAF50;
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      color: white;
+      margin-top: 120px;
+      margin-bottom: 30px;
+    }
+
+    .gallery-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      background-color: #1c1c1c;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      border-bottom: 2px solid #111;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      font-weight: 500;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .grid-sizer,
+    .gallery-item {
+      width: calc(33.333% - 16px);
+      margin-bottom: 16px;
+    }
+  </style>
 </head>
 <body>
+
+  <header>
     <div class="container">
-        <header>
-            <img src="/images/logo.jpg" alt="Wild Trails Safari Logo" class="logo">
-            <nav>
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-                <a href="/booking">Booking</a>
-                <a href="/gallery">Gallery</a>
-                <a href="/contact">Contact</a>
-            </nav>
-        </header>
-
-        <section id="gallery-section">
-            <h2>Wildlife Gallery</h2>
-            <div class="gallery-container">
-                <div class="gallery-item">
-                    <img src="/images/gallery/image1.jpg" alt="Tiger">
-                    <div class="overlay">
-                        <h3>Bengal Tiger</h3>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/images/gallery/image2.jpg" alt="Elephant">
-                    <div class="overlay">
-                        <h3>African Elephant</h3>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/images/gallery/image3.jpg" alt="Leopard">
-                    <div class="overlay">
-                        <h3>Indian Leopard</h3>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/images/gallery/image4.jpg" alt="Rhino">
-                    <div class="overlay">
-                        <h3>Indian Rhinoceros</h3>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/images/gallery/image5.jpg" alt="Lion">
-                    <div class="overlay">
-                        <h3>Asiatic Lion</h3>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/images/gallery/image6.jpg" alt="Deer">
-                    <div class="overlay">
-                        <h3>Spotted Deer</h3>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/images/gallery/image7.jpg" alt="Monkey">
-                    <div class="overlay">
-                        <h3>Rhesus Macaque</h3>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/images/gallery/image8.jpg" alt="Bird">
-                    <div class="overlay">
-                        <h3>Indian Roller</h3>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/images/gallery/image9.jpg" alt="Crocodile">
-                    <div class="overlay">
-                        <h3>Mugger Crocodile</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+      <img src="../images/logo.jpg" alt="Wild Trails Safari Logo" class="logo" />
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/booking">Booking</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/contact">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var galleryContainer = document.querySelector('.gallery-container');
-            var masonry = new Masonry( galleryContainer, {
-                itemSelector: '.gallery-item',
-                columnWidth: '.gallery-item', // Use element as column width
-                percentPosition: true,
-                gutter: 15 // Adjust spacing between images
-            });
-        });
-    </script>
+  <main>
+    <h2>Wildlife Gallery</h2>
+    <div class="gallery-container">
+      <div class="grid-sizer"></div>
+
+      <div class="gallery-item">
+        <img src="../images/gallery/image1.jpg" alt="Deer" />
+        <div class="gallery-caption">Deer</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image10.jpg" alt="Tiger" />
+        <div class="gallery-caption">Tiger</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image3.jpg" alt="Giraffe" />
+        <div class="gallery-caption">Giraffe</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image4.jpg" alt="Lion" />
+        <div class="gallery-caption">Lion</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image5.jpg" alt="Fox" />
+        <div class="gallery-caption">Fox</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image6.jpg" alt="Flamingo" />
+        <div class="gallery-caption">Flamingo</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image7.jpg" alt="Rhino" />
+        <div class="gallery-caption">Rhino</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image8.jpg" alt="Arctic Fox" />
+        <div class="gallery-caption">Arctic Fox</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image9.jpg" alt="Zebra" />
+        <div class="gallery-caption">Zebra</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image11.jpg" alt="Leopard" />
+        <div class="gallery-caption">Leopard</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image12.jpg" alt="Bear" />
+        <div class="gallery-caption">Bear</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image13.jpg" alt="Raccoon" />
+        <div class="gallery-caption">Raccoon</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image14.jpg" alt="Hyena" />
+        <div class="gallery-caption">Hyena</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image15.jpg" alt="Snakes" />
+        <div class="gallery-caption">Snakes</div>
+      </div>
+      <div class="gallery-item">
+        <img src="../images/gallery/image16.jpg" alt="Gorilla" />
+        <div class="gallery-caption">Gorilla</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let prevScrollPos = window.pageYOffset;
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", () => {
+      const currentScrollPos = window.pageYOffset;
+      if (currentScrollPos > prevScrollPos && currentScrollPos > header.offsetHeight) {
+        header.style.top = `-${header.offsetHeight}px`;
+      } else {
+        header.style.top = "0";
+      }
+      prevScrollPos = currentScrollPos;
+    });
+  </script>
+
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const grid = document.querySelector('.gallery-container');
+
+      const msnry = new Masonry(grid, {
+        itemSelector: '.gallery-item',
+        columnWidth: '.grid-sizer',
+        gutter: 16,
+        percentPosition: true
+      });
+
+      // Relayout after each image loads
+      const images = grid.querySelectorAll('img');
+      images.forEach(img => {
+        img.onload = () => msnry.layout();
+      });
+    });
+  </script>
 </body>
 </html>
-
-window.onload = function() {
-  var galleryContainer = document.querySelector('.gallery-container');
-  var masonry = new Masonry( galleryContainer, {
-      itemSelector: '.gallery-item',
-      columnWidth: '.gallery-item',
-      percentPosition: true,
-      gutter: 15
-  });
-};

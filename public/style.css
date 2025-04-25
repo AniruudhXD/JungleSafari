@@ -1,3 +1,4 @@
+/* style.css */
 html {
   margin: 0;
   padding: 0;
@@ -8,7 +9,7 @@ html {
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: url('./images/jungle.avif') no-repeat center center fixed; /* 'fixed' property here */
+  background: url('../images/jungle.avif') no-repeat center center fixed; /* 'fixed' property here */
   background-size: cover; /* Ensure the image covers the entire viewport */
   color: #fff;
   height: 100%; /* Ensure body takes full height */
@@ -33,55 +34,55 @@ html::before {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%; /* Ensure container takes full width */
 }
 
 header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between; /* Space between logo and nav */
-  align-items: center;
-  padding: 10px 20px;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-header .logo {
-  height: 60px; /* Adjust logo size */
-  border-radius: 8px; /* Rounded corners for the logo */
-  margin-left: 20px; /* Spacing from the left edge */
-}
-
-header nav a {
-  margin: 0 15px;
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
-  position: relative; /* Needed for absolute positioning of the hover text */
-  overflow: hidden; /* Hide the hover text initially */
-  display: inline-block; /* Ensure proper sizing */
-}
-
-header nav a:before {
-  content: attr(data-hover); /* Get the text from the data-hover attribute */
-  position: absolute;
-  top: 100%; /* Initially positioned below the link */
+  top: 0;
   left: 0;
-  color: #4CAF50; /* The hover color */
-  white-space: nowrap; /* Prevent text wrapping */
-  transition: transform 0.3s ease-in-out; /* Smooth transition for sliding up */
+  width: 100%;
+  padding: 15px 5%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
 }
 
-header nav a:hover:before {
-  transform: translateY(-100%); /* Slide the hover text up */
+
+.logo {
+  height: 50px;
+}
+
+nav a {
+  margin: 0 12px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0%;
+  height: 2px;
+  background: #4CAF50;
+  transition: 0.3s;
 }
 
 section {
   background-color: rgba(0, 0, 0, 0.5); /* Lighter black background for all sections */
+  backdrop-filter: blur(10px);
   padding: 30px;
   margin: 20px auto;
   border-radius: 10px;
   width: 80%;
   text-align: center;
   animation: fadeIn 1s ease-in-out;
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
 section h2 {
@@ -100,6 +101,11 @@ section p {
 
 .hero {
   padding: 60px 30px;
+  display: flex; /* Enable Flexbox for vertical centering */
+  flex-direction: column; /* Stack the heading and paragraph vertically */
+  justify-content: center; /* Vertically center the content */
+  align-items: center; /* Ensure horizontal centering of flex items */
+  text-align: center; /* Center text horizontally */
 }
 
 .hero h1 {
@@ -110,6 +116,7 @@ section p {
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 30px;
+  max-width: 800px; /* Optional: Limit the width of the paragraph */
 }
 
 .button {
@@ -126,26 +133,43 @@ section p {
   background-color: #45a049;
 }
 
+.button:focus {
+  outline: 2px solid #66cc66;
+  outline-offset: 2px;
+}
+
 .packages-preview {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding-top: 20px;
+  justify-content: center; /* Center the cards horizontally */
+  gap: 20px; /* Use gap for consistent spacing between items */
+  padding: 20px;
+  flex-wrap: wrap; /* Allow cards to wrap to the next line on smaller screens */
 }
 
 .package-card {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   padding: 20px;
-  margin: 15px;
-  width: calc(33% - 30px); /* Adjust width for responsiveness */
+  margin: 0; /* Remove individual card margins when using gap */
+  width: calc(33% - 20px); /* Adjust width to account for gap */
+  min-width: 300px; /* Ensure a minimum width for each card */
   text-align: center;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Added transition */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .package-card:hover {
-  transform: translateY(-5px); /* Move up slightly on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.packages-preview h2 {
+  color: #ffffff;
+  text-align: center;
+  margin-top: 55px; /* Adjust the negative value as needed */
+  margin-bottom: 5px; /* You can adjust this as well */
+  padding-bottom: 8px; /* Keep or adjust as needed */
+  border-bottom: 2px solid #4CAF50;
 }
 
 .packages-preview h3 {
@@ -167,59 +191,125 @@ section p {
 }
 
 .gallery-teaser {
+  padding: 20px 0;
   text-align: center;
-  padding: 30px;
-  margin: 20px auto;
+  background: rgba(0, 0, 0, 0.2);  /* Subtle background */
+  border-radius: 12px;
+  margin: 30px auto;
+  max-width: 90%;
+}
+
+.gallery-teaser h2 {
+  font-size: 22px;
+  margin-left: 20px;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.gallery-teaser .slideshow-container {
+  position: relative;
+  max-width: 600px;  /* Make it a bit smaller */
+  margin: 0 auto;
+}
+
+.gallery-teaser .slide {
+  display: none; /* Hide all slides initially */
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+
+.gallery-teaser .slide img {
+  width: 100%;
+  height: auto;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 80%;
+  object-fit: cover;
+}
+
+.gallery-teaser .caption {
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  font-size: 20px;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-teaser .button {
+  margin-top: 20px;
 }
 
 .gallery-container {
   width: 90%;
   margin: 20px auto;
   display: grid;
-  grid-template-columns: 250px 250px auto; /* Force at least two columns */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
   grid-gap: 15px;
 }
 
 .gallery-item {
-  margin-bottom: 15px;
-  /* All other styles for .gallery-item commented out */
-  /* border-radius: 8px; */
-  /* overflow: hidden; */
-  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
-  /* transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; */
-  position: relative; /* Keep this for the overlay later */
-  box-sizing: border-box; /* Keep this */
+  break-inside: avoid;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .gallery-item img {
-  display: block;
   width: 100%;
   height: auto;
+  display: block;
+  transition: transform 0.3s ease-in-out;
 }
 
-.overlay {
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-caption {
   position: absolute;
-  top: 0;
-  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0; /* Initially hidden */
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 8px;
-  font-size: 1.2rem;
   text-align: center;
+  padding: 10px 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-weight: 500;
 }
 
-.gallery-item:hover .overlay {
-  opacity: 1; /* Show overlay on hover */
+.gallery-item:hover .gallery-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gallery-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  nav {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-container {
+    grid-template-columns: 1fr;
+  }
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .overlay h3 {
@@ -228,21 +318,22 @@ section p {
 }
 
 .slideshow-container {
-  max-width: 600px; /* Adjust as needed */
+  max-width: none; /* Potentially causing issues with auto-sizing */
   position: relative;
   margin: 20px auto;
-  overflow: hidden; /* Hide images that are not currently visible */
-  border-radius: 8px; /* Match image border-radius */
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .slide {
-  display: none; /* Initially hide all slides */
+  display: none;
   width: 100%;
 }
 
 .slide img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain; /* Changed from cover */
   border-radius: 8px;
 }
 
@@ -253,8 +344,13 @@ section p {
 }
 
 @keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+      opacity: .4
+  }
+
+  to {
+      opacity: 1
+  }
 }
 
 /* Show the first slide by default */
@@ -262,123 +358,141 @@ section p {
   display: block;
 }
 
-section#booking-section {
-  padding: 40px;
-}
-
-section#booking-section h2 {
-  color: #fff;
-  border-bottom: 2px solid #4CAF50;
-  padding-bottom: 15px;
-  margin-bottom: 30px;
-  text-align: left;
-}
-
-form#booking-form {
-  display: flex;
-  flex-direction: column; /* Stack form elements vertically */
-  gap: 20px; /* Spacing between form elements */
-  width: 80%; /* Adjust form width as needed */
-  max-width: 600px; /* Limit maximum width */
-  margin: 0 auto; /* Center the form on the page */
-}
-
-form#booking-form label {
-  color: #eee;
-  font-weight: bold;
-  margin-bottom: 8px;
-  display: block;
-  text-align: left;
-}
-
-form#booking-form input[type="text"],
-form#booking-form input[type="tel"],
-form#booking-form input[type="email"],
-form#booking-form input[type="date"],
-form#booking-form select {
-  padding: 14px;
-  border: 1px solid #777;
-  border-radius: 5px;
-  background-color: #444;
-  color: white;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 1rem; /* Improve readability */
-  transition: border-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Add levitate transitions */
-}
-
-form#booking-form select {
-  appearance: none; /* Remove default arrow */
-  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-  background-repeat: no-repeat;
-  background-position-x: 97%;
-  background-position-y: 50%;
-}
-
-form#booking-form button[type="submit"] {
-  padding: 16px 30px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 8px; /* More rounded button */
-  cursor: pointer;
-  font-size: 1.2rem;
-  transition: background-color 0.3s ease, box-shadow 0.2s ease-in-out; /* Smooth transition for hover */
-  width: fit-content; /* Adjust button width to content */
-  margin: 20px auto 0; /* Center the button */
-}
-
-form#booking-form input[type="text"]:hover,
-form#booking-form input[type="tel"]:hover,
-form#booking-form input[type="email"]:hover,
-form#booking-form input[type="date"]:hover,
-form#booking-form select:hover {
-  border-color: #66cc66; /* A slightly brighter green on hover */
-  transform: translateY(-2px); /* Subtle levitate on individual fields */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow on individual fields */
-}
-
-form#booking-form button[type="submit"]:hover {
-  background-color: #45a049;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow on button hover */
-}
-
-.company-details,
-.package-details {
-    background-color: rgba(50, 50, 50, 0.7); /* Slightly lighter dark gray with some transparency */
-    padding: 25px;
-    margin-bottom: 20px;
-    border-radius: 8px;
+/* Booking Page Styles */
+.booking-main {
+    padding: 40px 20px; /* Adjust vertical padding */
+    margin: 40px auto; /* More top/bottom margin */
+    width: 90%; /* Wider on larger screens */
+    max-width: 700px; /* Limit maximum width */
+    background-color: rgba(0, 0, 0, 0.4); /* Darker background */
+    backdrop-filter: blur(10px); /* Apply blur */
+    border-radius: 12px; /* More rounded corners */
     color: #eee;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* More prominent shadow */
 }
 
-.company-details h2,
-.package-details h3 {
-    color: #4CAF50;
-    margin-top: 0;
-    border-bottom: 1px solid #666;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
+.booking-container h2 {
+    color: #4CAF50; /* Green heading */
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    text-align: center; /* Center the heading */
 }
 
-.package-details ul {
-    list-style-type: disc;
-    padding-left: 20px;
+/* Style for the form */
+form#bookingForm {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 20px; /* Spacing between form elements */
+    padding: 20px;
 }
 
-.package-details li {
+form#bookingForm label {
+    font-weight: bold;
     margin-bottom: 5px;
+    display: block;
+    text-align: left;
+    color: #ddd;
 }
 
-.company-details:hover,
-.package-details:hover {
-    transform: translateY(-5px);
+form#bookingForm input[type="text"],
+form#bookingForm input[type="tel"],
+form#bookingForm input[type="email"],
+form#bookingForm input[type="date"],
+form#bookingForm select,
+form#bookingForm textarea {
+    padding: 14px;
+    border: 1px solid #555;
+    border-radius: 6px;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+form#bookingForm select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: 97%;
+    background-position-y: 50%;
+}
+
+form#bookingForm textarea {
+    min-height: 100px;
+}
+
+form#bookingForm input[type="text"]:hover,
+form#bookingForm input[type="tel"]:hover,
+form#bookingForm input[type="email"]:hover,
+form#bookingForm input[type="date"]:hover,
+form#bookingForm select:hover,
+form#bookingForm textarea:hover {
+    border-color: #66cc66;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Style for the submit button */
+form#bookingForm button[type="submit"] {
+    padding: 16px 30px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease-in-out;
+    width: fit-content;
+    margin-top: 30px; /* More top margin */
+    align-self: center; /* Center the button in the grid */
+}
+
+form#bookingForm button[type="submit"]:hover {
+    background-color: #45a049;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* ... existing CSS ... */
+/* Style for the booking status message */
+#booking-status {
+  margin-top: 20px;
+  padding: 12px;
+  text-align: center;
+  font-weight: 500;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #aeea00;
+}
 
+#booking-status.success {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+}
+
+#booking-status.error {
+    background-color: rgba(255, 0, 0, 0.2);
+    color: #f44336;
+}
+
+.booking-main {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Home Page Slideshow Styles */
 .home-slideshow-section {
   text-align: center;
   padding: 30px;
@@ -401,14 +515,12 @@ form#booking-form button[type="submit"]:hover {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  display: none;
 }
 
 .home-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Changed from cover */
   border-radius: 8px;
 }
 
@@ -489,3 +601,79 @@ form#booking-form button[type="submit"]:hover {
       opacity: 1
   }
 }
+
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+li,
+button {
+  /* ... other styles ... */
+  color: white; /* Or whatever the default text color is */
+  transition: color 0.3s ease-in-out; /* This is the transition property */
+}
+
+a:hover,
+h1:hover,
+h2:hover,
+h3:hover,
+h4:hover,
+h5:hover,
+h6:hover,
+p:hover,
+span:hover,
+li:hover,
+button:hover {
+  color: #4CAF50;
+  cursor: pointer;
+  /* ... other hover styles ... */
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  /* ... other body styles ... */
+}
+
+h1, h2, h3, h4, h5, h6, a, p, span, li, button {
+  font-family: 'Poppins', sans-serif; /* Apply to other text elements as needed */
+}
+
+.contact-main {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically (if you want it in the middle of the viewport) */
+  padding: 40px 20px; /* Add some padding around the content */
+  min-height: calc(100vh - /* height of your header */ 70px); /* Adjust header height */
+  box-sizing: border-box;
+}
+
+.contact-container {
+  padding: 40px 20px; /* Adjust vertical padding */
+  margin: 40px auto; /* More top/bottom margin */
+  width: 90%; /* Wider on larger screens */
+  max-width: 700px; /* Limit maximum width */
+  background-color: rgba(0, 0, 0, 0.4); /* Darker background */
+  backdrop-filter: blur(10px); /* Apply blur */
+  border-radius: 12px; /* More rounded corners */
+  color: #eee;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* More prominent shadow */
+}
+
+.contact-container h2 {
+  color: #4CAF50; /* Green heading */
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.contact-container p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+

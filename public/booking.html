@@ -1,49 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Booking - Wild Trails Safari</title>
-  <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <title>Wild Trails Safari - Booking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-  <div class="container">
     <header>
-      <img src="/images/logo.jpg" alt="Wild Trails Safari Logo" class="logo">
-      <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/booking">Booking</a>
-        <a href="/gallery">Gallery</a>
-        <a href="/contact">Contact</a>
-      </nav>
+        <div class="container">
+            <img src="../images/logo.jpg" alt="Wild Trails Safari Logo" class="logo">
+            <nav>
+                <a href="/" data-hover="Home">Home</a>
+                <a href="/about" data-hover="About">About</a>
+                <a href="/booking" data-hover="Booking">Booking</a>
+                <a href="/gallery" data-hover="Gallery">Gallery</a>
+                <a href="/contact" data-hover="Contact">Contact</a>
+            </nav>
+        </div>
     </header>
 
-    <section id="booking-section">
-      <h2>Book Your Safari with Wild Trails</h2>
-      <form action="/book" method="POST" id="booking-form">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" placeholder="Your Name" required>
+    <main class="booking-main">
+        <div class="booking-container">
+            <h2>Book Your Safari Adventure</h2>
+            <form id="bookingForm">
+                <label for="package">Choose a Package:</label>
+                <select id="package" name="package">
+                    <option value="Lite" selected>Lite Package</option>
+                    <option value="Standard">Standard Package</option>
+                    <option value="Premium">Premium Package</option>
+                </select><br>
 
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="Your Phone" pattern="[0-9]{10}" required>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required><br>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required><br>
 
-        <label for="date">Preferred Date</label>
-        <input type="date" id="date" name="date" required>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone"><br>
 
-        <label for="package">Select Package</label>
-        <select id="package" name="package" class="package-select" required>
-          <option value="" disabled selected>Choose a Package</option>
-          <option value="Lite">Lite - ₹2000 (2 hrs)</option>
-          <option value="Standard">Standard - ₹4000 (4 hrs + Refreshments)</option>
-          <option value="Premium">Premium - ₹6000 (Full-day with meals)</option>
-        </select>
+                <label for="date">Preferred Date:</label>
+                <input type="date" id="date" name="date"><br>
 
-        <button type="submit">Book Now</button>
-      </form>
-    </section>
-  </div>
+                <label for="adults">Number of Adults:</label>
+                <input type="number" id="adults" name="adults" min="1" value="1"><br>
+
+                <label for="children">Number of Children:</label>
+                <input type="number" id="children" name="children" min="0" value="0"><br>
+
+                <label for="special_requests">Special Requests:</label>
+                <textarea id="special_requests" name="special_requests" placeholder="Any specific needs or requests?"></textarea><br>
+
+                <button type="submit" class="button">Book Now</button>
+            </form>
+            <div id="booking-status"></div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookingForm = document.getElementById('bookingForm');
+            const bookingStatus = document.getElementById('booking-status');
+
+            bookingForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const formData = {
+                    package: bookingForm.elements.package.value,
+                    name: bookingForm.elements.name.value,
+                    email: bookingForm.elements.email.value,
+                    phone: bookingForm.elements.phone.value,
+                    date: bookingForm.elements.date.value,
+                    adults: bookingForm.elements.adults.value,
+                    children: bookingForm.elements.children.value,
+                    special_requests: bookingForm.elements.special_requests.value
+                };
+
+                fetch('http://localhost:3000/book', { // Changed URL to your Node.js backend
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.text()) // Expecting plain text response from Node.js
+                .then(data => {
+                    bookingStatus.textContent = data; // Display the plain text message
+                    if (data.startsWith("Booking successful")) {
+                        bookingForm.reset(); // Clear the form on success
+                    }
+                })
+                .catch(error => {
+                    bookingStatus.textContent = 'An error occurred while submitting the booking.';
+                    console.error('Error:', error);
+                });
+            });
+        });
+
+        let prevScrollPos = window.pageYOffset;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScrollPos = window.pageYOffset;
+
+            if (currentScrollPos > prevScrollPos && currentScrollPos > header.offsetHeight) {
+                header.style.top = `-${header.offsetHeight}px`;
+            } else if (currentScrollPos < prevScrollPos) {
+                header.style.top = '0';
+            }
+
+            prevScrollPos = currentScrollPos;
+        });
+    </script>
 </body>
 </html>

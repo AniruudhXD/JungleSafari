@@ -3,28 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Contact - Wild Trails Safari</title>
-  <link rel="stylesheet" href="./style.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <img src="/images/logo.jpg" alt="Wild Trails Safari Logo" class="logo">
+  <header>
+    <div class="container">
+      <img src="../images/logo.jpg" alt="Wild Trails Safari Logo" class="logo">
       <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/booking">Booking</a>
-        <a href="/gallery">Gallery</a>
-        <a href="/contact">Contact</a>
+        <a href="/" data-hover="Home">Home</a>
+        <a href="/about" data-hover="About">About</a>
+        <a href="/booking" data-hover="Booking">Booking</a>
+        <a href="/gallery" data-hover="Gallery">Gallery</a>
+        <a href="/contact" data-hover="Contact">Contact</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <section>
-      <h2>Contact Us - Wild Trails Safari</h2>
-      <p>Email: info@wildtrailssafari.com</p>
-      <p>Phone: +91 98765 43210</p>
-      <p>Location: Near Tiger Reserve, National Forest, India</p>
-    </section>
-  </div>
+  <main class="contact-main">
+    <div class="contact-container">
+      <h2>Contact Us</h2>
+      <p>For any inquiries or assistance, please feel free to reach out to us.</p>
+      <p><strong>Email:</strong> <a href="mailto:info@wildtrailssafari.com" style="color: #aeea00; text-decoration: none;">info@wildtrailssafari.com</a></p>
+      <p><strong>Phone:</strong> <strong>+91 98765 43210</strong></p>
+      <p><strong>Location:</strong> Near Tiger Reserve, National Forest, India</p>
+      <p>We look forward to hearing from you!</p>
+    </div>
+  </main>
 </body>
 </html>
